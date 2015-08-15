@@ -19,6 +19,7 @@ case ask("Choose Template Engine:", limited_to: %w[haml slim erb])
   when "slim"
   	gem "slim-rails"
   when "erb"
+  	run 'echo \"Got it.\"'
 end
 
 # Development Environment Gems
@@ -34,6 +35,7 @@ gem_group :development do
   	  gem "rspec-rails"
   	  gem "guard-rspec"
   	  gem "cucumber-rails"
+  	  run "rails g rspec:install"
     when "minitest"
       # use MiniTest
   	  gem "minitest"
@@ -74,24 +76,44 @@ gem_group :production do
       end
   end
   # Select application server in production
-  case ask("Select Production App Server", limited_to: %w[puma unicorn])
+  case ask("Select Production App Server", limited_to: %w[puma unicorn later])
     when "puma"  
       gem "puma"
     when "unicorn"
   	  gem "unicorn"
+  	when "later"  
   end
 end
 
+# Run bundle
+# ==================================
+run "bundle install"
+
+
+# Set up Assets
+# ==================================
+# Add SASS extention to application.css
+run "mv /app/assets/stylesheets/application.css /app/assets/stylesheets/application.css.scss"
+# Remove require tree directives
+run "sed -i '' /require_tree/d app/assets/javascripts/application.js"
+run "sed -i '' /require_tree/d app/assets/stylesheets/application.css.scss"
+# Add bourbon to stylesheet file
+run "echo >> app/assets/stylesheets/application.css.scss"
+run "echo '@import \"bourbon\";' >>  app/assets/stylesheets/application.css.scss"
+
+# Install gems that are run
+run "rails g cancan:ability"
+
 # - Installs either [Angular js](), [Ember js]() or, [Backbone js]()
 # ==================================
-if yes?("Would you like to select a js framework?")
+if yes?("Would you like to select a js framework? [yes no]")
   case ask("", limited_to: %w[backbone ember angular])
   when "backbone"
   	gem "rails-backbone"
   	run "rails g backbone:install"
   when "ember"
   	gem 'ember-rails'
-	gem 'ember-source', '~> 1.9.0'
+	gem 'ember-source'
 	run "rails generate ember:bootstrap" 
   when "angular"
   	gem "angular-rails"
@@ -135,7 +157,7 @@ end
 
 # Install Active Model Serializers
 # ==================================
-if yes?("Install Active Model Serializers?")
+if yes?("Install Active Model Serializers? [yes no]")
   gem 'active_model_serializers' 
 end
 
@@ -179,20 +201,6 @@ if yes?("Would you like to install Capistrano?")
   gem 'capistrano-rbenv'#, '~> 2.0.2'
   run "cap install"
 end
-
-# Set up Assets
-# ==================================
-# Add SASS extention to application.css
-run "mv /app/assets/stylesheets/application.css /app/assets/stylesheets/application.css.scss"
-# Remove require tree directives
-run "sed -i '' /require_tree/d app/assets/javascripts/application.js"
-run "sed -i '' /require_tree/d app/assets/stylesheets/application.css.scss"
-# Add bourbon to stylesheet file
-run "echo >> app/assets/stylesheets/application.css.scss"
-run "echo '@import \"bourbon\";' >>  app/assets/stylesheets/application.css.scss"
-
-# Install gems that are run
-run "rails g cancan:ability"
 
 # Let's try to keep secret things 
 # secret
