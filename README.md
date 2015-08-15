@@ -7,7 +7,7 @@ I decided to create my own flavor.
 ## How to use 
 
 ```bash
-rails new [your_app_name] -m https://raw.github.com/bodefuwa/rails_starter_template/master/template.rb
+rails new [your_app_name] -m https://raw.githubusercontent.com/bodefuwa/rails_starter_template/master/bootstrap.rb
 ```
 
 ---
@@ -60,5 +60,5 @@ rails new [your_app_name] -m https://raw.github.com/bodefuwa/rails_starter_templ
 yourChoices = %w[experiment extend enjoy]
 ```
 
-> Of course upon completing this small project, I saw so many other gems I > could have added that would have provided more value. 
+> Of course upon completing this small project, I saw so many other gems I could have added that would have provided more value. 
 > That's what makes  the rails community great I guess. On to v0.2

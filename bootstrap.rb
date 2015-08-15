@@ -24,20 +24,21 @@ end
 # Development Environment Gems
 # ==================================
 gem_group :development do 
-# Clean up your errors
-gem "better_errors"
-# Choose test framework
-case ask("Choose testing framework:", limited_to: %w[rspec minitest])
-  when "rspec"
-  	# use RSpec
-  	gem "rspec"
-  	gem "rspec-rails"
-  	gem "guard-rspec"
-  	gem "cucumber-rails"
-  when "minitest"
-  	# use MiniTest
-  	gem "minitest"
-  	gem "minitest-rails"
+  # Clean up your errors
+  gem "better_errors"
+  # Choose test framework
+  case ask("Choose testing framework:", limited_to: %w[rspec minitest])
+    when "rspec"
+  	  # use RSpec
+  	  gem "rspec"
+  	  gem "rspec-rails"
+  	  gem "guard-rspec"
+  	  gem "cucumber-rails"
+    when "minitest"
+      # use MiniTest
+  	  gem "minitest"
+  	  gem "minitest-rails"
+  end
 end
 
 # Test Environment Gems
@@ -57,26 +58,28 @@ end
 # Production Environment Gems
 # ==================================
 gem_group :production do 
-# For rails 4 deployment on Heroku
-# Set production database 
-case ask("Select Production Database", limited_to: %w[pg mysql nosql])
-  when "pg"
-  	gem "pg"
-  when "mysql"
-  	gem "mysql"
-  when "nosql"
-  	case ask("Select NoSQL Database", limited_to: %w[mongo redis])
-  	  when "mongo"
-  	  	gem "mongoid"
-  	  when "redis"
-  	  	gem "redis-rails"
-  	end
-# Select application server in production
-case ask("Select Production App Server", limited_to: %w[puma unicorn])
-  when "puma"  
-    gem "puma"
-  when "unicorn"
-  	gem "unicorn"
+  # For rails 4 deployment on Heroku
+  # Set production database 
+  case ask("Select Production Database", limited_to: %w[pg mysql nosql])
+    when "pg"
+  	  gem "pg"
+    when "mysql"
+  	  gem "mysql"
+    when "nosql"
+  	  case ask("Select NoSQL Database", limited_to: %w[mongo redis])
+  	    when "mongo"
+  	  	  gem "mongoid"
+  	    when "redis"
+  	  	  gem "redis-rails"
+      end
+  end
+  # Select application server in production
+  case ask("Select Production App Server", limited_to: %w[puma unicorn])
+    when "puma"  
+      gem "puma"
+    when "unicorn"
+  	  gem "unicorn"
+  end
 end
 
 # - Installs either [Angular js](), [Ember js]() or, [Backbone js]()
@@ -119,9 +122,8 @@ end
 if yes?("Install font awesome?")
   gem "font-awesome-rails"
   # Add font-awesome to stylesheet file
-run "echo >> app/assets/stylesheets/application.css*"
-run "echo '@import \"font-awesome\";' >>  app/assets/stylesheets/application.css*"
-
+  run "echo >> app/assets/stylesheets/application.css*"
+  run "echo '@import \"font-awesome\";' >>  app/assets/stylesheets/application.css*"
 end
 
 # Install Elasticsearch
@@ -253,5 +255,4 @@ if yes?("Set up heroku?")
   run "heroku create"
   run "git push heroku master"
   run "heroku rename #{app_name}"
-
 end
