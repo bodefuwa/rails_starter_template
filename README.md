@@ -1,8 +1,8 @@
 # Rails Starter Template
 
-Inspired by [Denny Britz](https://raw.github.com/dennybritz/rails_startup_template/master/template.rb) Rails staturp template
+Inspired by [Denny Britz's](https://raw.github.com/dennybritz/rails_startup_template/master/template.rb) Rails staturp template
 
-I decided to create my own flavor.
+I decided to create my own flavor. 
 
 ## How to use 
 
@@ -10,41 +10,55 @@ I decided to create my own flavor.
 rails new [your_app_name] -m https://raw.github.com/bodefuwa/rails_starter_template/master/template.rb
 ```
 
+---
+
 ## Script provides the following:
 
-- Sets up your gem file
-Modifies your application.css to application.css.scss and removes the include_tree directives.
+- Sets up your Gemfile
 
-- Installs either [Haml](), [Slim]() or leaves ERB
+- Modifies your application.css with sass extension and removes the include_tree directives.
 
-- Installs either [Twitter bootstrap]() or [Zurb foundation]()
+### Gives you the following options: 
 
-- Installs either [PostgreSQL](), [MySQL](), [MongoDB](), or [Redis]()
+- [Haml](https://github.com/indirect/haml-rails), [Slim](https://github.com/slim-template/slim-rails) or leaves ERB
 
-- Optionally installs [Font Awesome]()
+- [Twitter bootstrap](https://github.com/twbs/bootstrap-sass) or [Zurb foundation](https://github.com/zurb/foundation-rails)
 
-- Optionally installs [Active Admin]() or [Upmin]()
+- [PostgreSQL](https://rubygems.org/gems/pg), [MySQL](https://github.com/brianmario/mysql2), [MongoDB](https://github.com/mongodb/mongoid), or [Redis](https://github.com/redis-store/redis-rails)
 
-- Installs [Cancan]()
+- [Font Awesome](https://github.com/bokmann/font-awesome-rails)
 
-- Installs either [Devise](), [OAuth](), or
+- [Active Admin](https://github.com/activeadmin/activeadmin) or [Upmin](https://github.com/upmin/upmin-admin-ruby)
 
-- Installs [Better Errors]()
+- Installs [Cancan](https://github.com/ryanb/cancan)
 
-- Installs either [Puma]() or [Unicorn]()
+- [Devise](https://github.com/plataformatec/devise) or [OmniAuth](https://github.com/intridea/omniauth-rails)
 
-- Optionally installs [Elasticsearch]()
+- Installs [Better Errors](https://github.com/charliesome/better_errors)
 
-- Optionally install [Active Model Serializers]()
+- [Puma](https://github.com/puma/puma) or [Unicorn](https://github.com/defunkt/unicorn)
 
-- Installs either [Rspec]() or [Minitest]()
+- [Elasticsearch](https://github.com/elastic/elasticsearch-rails)
 
-- Optionally installs API facilities [Grape](), [Rack-Cors](), and [Grape-Swagger]()
+- Installs [Active Model Serializers](https://github.com/rails-api/active_model_serializers)
 
-- Installs either [Angular js](), [Ember js]() or, [Backbone js]()
+- [Rspec](https://github.com/rspec/rspec-rails) or [Minitest](https://github.com/seattlerb/minitest)
 
-- Initializes a new git repository with an intial commit
+- API facilities [Grape](https://github.com/ruby-grape/grape), [Rack-Cors](https://github.com/cyu/rack-cors), and [Grape-Swagger](https://github.com/tim-vandecasteele/grape-swagger)
 
-- Optionally creates a github or bitbucket repository
+- [Angular js](https://github.com/ludicast/angular-rails), [Ember js](https://github.com/emberjs/ember-rails) or, [Backbone js](https://github.com/codebrew/backbone-rails)
 
-enjoy, experiment, extend
+- Initializes a new git repository with an initial commit
+
+- Push to a [GitHub](http://github.com) or [Bitbucket](http://bitbucket.org) repository
+
+- Create a [Heroku](http://heroku.com) stack and deploy 
+
+---
+
+```ruby
+yourChoices = %w[experiment extend enjoy]
+```
+
+> Of course upon completing this small project, I saw so many other gems I > could have added that would have provided more value. 
+> That's what makes  the rails community great I guess. On to v0.2
